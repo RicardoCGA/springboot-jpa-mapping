@@ -1,5 +1,6 @@
 package com.exercise.springbootinit.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -30,7 +31,7 @@ import lombok.NoArgsConstructor;
 @JsonIdentityInfo(
 		  generator = ObjectIdGenerators.PropertyGenerator.class, 
 		  property = "id")
-public class Order {
+public class Order implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,5 +47,7 @@ public class Order {
 		inverseJoinColumns = @JoinColumn(name="PRODUCT_ID", referencedColumnName = "ID")
 	)
 	private List<Product> products;
+	
+	private static final long serialVersionUID = 7044069630976836442L;
 	
 }
