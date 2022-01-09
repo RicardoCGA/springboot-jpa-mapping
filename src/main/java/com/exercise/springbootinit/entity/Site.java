@@ -1,5 +1,7 @@
 package com.exercise.springbootinit.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,8 +22,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Site {
-
+public class Site implements Serializable {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -31,5 +33,7 @@ public class Site {
 	@JoinColumn(name="BRAND_ID", referencedColumnName = "ID")
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private Brand brand;
+	
+	private static final long serialVersionUID = -3959516177595941403L;
 	
 }
